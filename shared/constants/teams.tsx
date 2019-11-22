@@ -411,7 +411,7 @@ const isMultiOwnerTeam = (state: TypedState, teamname: Types.Teamname): boolean 
 }
 
 export const getTeamID = (state: TypedState, teamname: Types.Teamname): string =>
-  state.teams.teamNameToID.get(teamname, '')
+  state.teams.teamNameToID.get(teamname, Types.noTeamID)
 
 export const getTeamNameFromID = (state: TypedState, teamID: string): Types.Teamname | null =>
   state.teams.teamNameToID.findKey(value => value === teamID) || null

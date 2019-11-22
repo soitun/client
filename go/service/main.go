@@ -661,7 +661,10 @@ func (d *Service) startupGregor() {
 		d.G().GregorListener = d.gregor
 
 		// Add default handlers
-		d.gregor.PushHandler(newUserHandler(d.G()))
+		userHandler := newUserHandler(d.G())
+		userHandler.PushUserBlockedHandler(d.home)
+
+		d.gregor.PushHandler(userHandler)
 		// TODO -- get rid of this?
 		d.gregor.PushHandler(newRekeyLogHandler(d.G()))
 

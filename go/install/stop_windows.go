@@ -19,8 +19,15 @@ func StopAllButService(mctx libkb.MetaContext, _ keybase1.ExitCode) {
 		mctx.Error("StopAllButService: Error in GetCurrentMountDir: %s", err.Error())
 	} else {
 		// open special "file". Errors not relevant.
-		mctx.Debug("StopAllButService: opening .kbfs_unmount")
-		os.Open(filepath.Join(mountdir, "\\.kbfs_unmount"))
-		libkb.ChangeMountIcon(mountdir, "")
+		unmountPath := filepath.Join(mountdir, "\\.kbfs_unmount")
+		mctx.Debug("StopAllButService: opening .kbfs_unmount at %s", unmountPath)
+		_, err = os.Open(unmountPath)
+		if err != nil {
+			mctx.Error("unable to unmount kbfs: %s", err)
+		}
+		err = libkb.ChangeMountIcon(mountdir, "")
+		if err != nil {
+			mctx.Error("unable to change mount icon: %s", err)
+		}
 	}
 }

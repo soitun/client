@@ -1,8 +1,9 @@
 import {spawn} from 'child_process'
 import {keybaseBinPath} from './paths.desktop'
+import logger from '../../logger'
 
 export default function() {
-  console.log('Not connected - starting keybase')
+  logger.info('Not connected - starting keybase')
   const binPath = keybaseBinPath()
   if (!binPath) {
     return

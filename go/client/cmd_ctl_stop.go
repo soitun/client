@@ -59,6 +59,7 @@ func (s *CmdCtlStop) Run() (err error) {
 		}
 		cli, err := GetCtlClient(s.G())
 		if err != nil {
+			mctx.Error("failed to get ctl client for shutdown: %s", err)
 			return err
 		}
 		return cli.StopService(mctx.Ctx(), keybase1.StopServiceArg{ExitCode: keybase1.ExitCode_OK})

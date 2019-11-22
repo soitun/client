@@ -246,7 +246,7 @@ const plumbEvents = () => {
         break
       case 'requestStartService':
         if (isWindows) {
-          console.log('requestStartService: starting keybase.exe')
+          logger.info('requestStartService: starting keybase.exe')
           startWinService()
         }
         break

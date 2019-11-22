@@ -2052,8 +2052,8 @@ func (e *Env) GetLogFileConfig(filename string) *logger.LogFileConfig {
 		maxKeepFiles = 2
 		maxSize = 16 * opt.MiB
 	} else {
-		maxKeepFiles = 3
-		maxSize = 128 * opt.MiB
+		maxKeepFiles = 10
+		maxSize = 1280 * opt.MiB
 	}
 
 	return &logger.LogFileConfig{

@@ -43,6 +43,20 @@ type DropdownProps = Pick<
 const Actions = (p: Props) => {
   let buttons: Array<React.ReactNode> = []
 
+  if (p.blocked) {
+    return (
+      <Kb.Box2 gap="tiny" centerChildren={true} direction="horizontal" fullWidth={true}>
+        <Kb.Button
+          key="Manage blocking"
+          mode="Secondary"
+          type="Danger"
+          label="Manage blocking"
+          onClick={p.onManageBlocking}
+        />
+      </Kb.Box2>
+    )
+  }
+
   const dropdown = (
     <DropdownButton
       key="dropdown"

@@ -181,33 +181,20 @@ const Bio = (p: Props) => (
       </Kb.Text>
     )}
     {p.blocked ? (
-      <Kb.Text type="BodySmallError" style={styles.blockedBackgroundText}>
-        <Kb.Text
-          type="BodySmallError"
-          center={true}
-          style={Styles.collapseStyles([styles.text])}
-          selectable={true}
-        >
+      <Kb.Text type="BodySmallError" center={true} style={styles.blockedBackgroundText}>
+        <Kb.Text type="BodySmallError" center={true} style={styles.text} selectable={true}>
           You blocked them.
         </Kb.Text>
-        <Kb.Text
-          type="BodySmallError"
-          center={true}
-          style={Styles.collapseStyles([styles.text])}
-          selectable={true}
-        >
+        <Kb.Text type="BodySmallError" center={true} style={styles.text} selectable={true}>
           {p.username} won’t be able to chat with you or add you to teams.
         </Kb.Text>
       </Kb.Text>
     ) : (
       p.hidFromFollowers && (
-        <Kb.Text
-          type="BodySmallError"
-          center={true}
-          style={Styles.collapseStyles([styles.text])}
-          selectable={true}
-        >
-          You hid them from your followers.
+        <Kb.Text type="BodySmallError" center={true} style={styles.blockedBackgroundText}>
+          <Kb.Text type="BodySmallError" center={true} style={styles.text} selectable={true}>
+            You hid them from your followers.
+          </Kb.Text>
         </Kb.Text>
       )
     )}
@@ -222,8 +209,9 @@ const styles = Styles.styleSheetCreate(
         isElectron: {textAlign: 'center'},
       }),
       blockedBackgroundText: {
-        backgroundColor: Styles.globalColors.red_10,
-        margin: Styles.globalMargins.tiny,
+        backgroundColor: Styles.globalColors.red_20,
+        borderRadius: Styles.borderRadius,
+        padding: Styles.globalMargins.tiny,
       },
       bold: {...Styles.globalStyles.fontBold},
       container: {backgroundColor: Styles.globalColors.white, flexShrink: 0},

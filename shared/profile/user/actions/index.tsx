@@ -41,8 +41,6 @@ type DropdownProps = Pick<
 > & {onUnfollow?: () => void}
 
 const Actions = (p: Props) => {
-  let buttons: Array<React.ReactNode> = []
-
   if (p.blocked) {
     return (
       <Kb.Box2 gap="tiny" centerChildren={true} direction="horizontal" fullWidth={true}>
@@ -56,6 +54,8 @@ const Actions = (p: Props) => {
       </Kb.Box2>
     )
   }
+
+  let buttons: Array<React.ReactNode> = []
 
   const dropdown = (
     <DropdownButton
